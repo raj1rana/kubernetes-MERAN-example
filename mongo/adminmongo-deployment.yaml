@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: adminmongo
+  name: adminmongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: adminmongo
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: adminmongo
+    spec:
+      containers:
+      - env:
+        - name: HOST
+          value: 0.0.0.0
+        image: mrvautin/adminmongo
+        imagePullPolicy: ""
+        name: adminmongo
+        ports:
+        - containerPort: 1234
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

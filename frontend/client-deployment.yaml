@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: client
+  name: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: client
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: client
+    spec:
+      containers:
+      - args:
+        - bash
+        - -c
+        - cd /application && npm start
+        image: rajendar1rana/demo-marn-frontend:v4
+        imagePullPolicy: ""
+        name: client
+        ports:
+        - containerPort: 3000
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

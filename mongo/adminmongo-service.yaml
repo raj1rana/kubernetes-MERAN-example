@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: adminmongo
+  name: adminmongo
+spec:
+  ports:
+  - name: "1234"
+    port: 1234
+    targetPort: 1234
+  selector:
+    io.kompose.service: adminmongo
+status:
+  loadBalancer: {}
